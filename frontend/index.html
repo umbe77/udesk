@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>udesk</title>
 </head>
+
 <body>
-<div id="app"></div>
-<script src="./src/main.js" type="module"></script>
+    <div class="container">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Type to search..." id="searchInput" autofocus>
+        </div>
+        <div class="results" id="results"></div>
+        <div class="status-bar">
+            <span id="itemCount">0 items</span>
+            <span>↑↓: Navigate | Enter: Select | Esc: Close</span>
+        </div>
+    </div>
+    <script src="./src/main.js" type="module"></script>
 </body>
+
 </html>

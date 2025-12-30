@@ -2,7 +2,8 @@ package main
 
 import (
 	"context"
-	"fmt"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -19,9 +20,20 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+	// Hide window on startup - it will be shown via systray
+	// runtime.WindowHide(ctx)
+
+	// Intercept window close event to hide instead of quit
+	runtime.EventsOn(ctx, "window:close", func(optionalData ...any) {
+		runtime.WindowHide(ctx)
+	})
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
+func (a *App) ShowWindow() {
+	runtime.WindowShow(a.ctx)
+	runtime.WindowCenter(a.ctx)
+}
+
+func (a *App) HideWindow() {
+	runtime.WindowHide(a.ctx)
 }

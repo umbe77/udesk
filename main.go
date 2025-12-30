@@ -6,10 +6,15 @@ import (
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
+	"github.com/wailsapp/wails/v2/pkg/options/linux"
+	"github.com/wailsapp/wails/v2/pkg/options/windows"
 )
 
 //go:embed all:frontend/dist
 var assets embed.FS
+
+//go:embed icon.png
+var icon []byte
 
 func main() {
 	// Create an instance of the app structure
@@ -18,15 +23,24 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:  "udesk",
-		Width:  1024,
-		Height: 768,
+		Width:  800,
+		Height: 600,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
-		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
+		BackgroundColour: &options.RGBA{R: 0, G: 0, B: 0, A: 0},
 		OnStartup:        app.startup,
-		Bind: []interface{}{
+		Bind: []any{
 			app,
+		},
+		Frameless:         true,
+		HideWindowOnClose: true,
+		Windows: &windows.Options{
+			WebviewIsTransparent: true,
+			WindowIsTranslucent:  true,
+		},
+		Linux: &linux.Options{
+			Icon: icon,
 		},
 	})
 

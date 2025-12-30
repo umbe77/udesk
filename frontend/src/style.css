@@ -1,26 +1,110 @@
-html {
-    background-color: rgba(27, 38, 54, 1);
-    text-align: center;
-    color: white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    color: white;
-    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: transparent;
+    color: #e0e0e0;
+    overflow: hidden;
 }
 
-@font-face {
-    font-family: "Nunito";
-    font-style: normal;
-    font-weight: 400;
-    src: local(""),
-    url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
-}
-
-#app {
+.container {
+    width: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.search-box {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 18px;
+    background: rgba(50, 50, 50, 0.8);
+    border: 2px solid rgba(100, 100, 100, 0.5);
+    border-radius: 8px;
+    color: #e0e0e0;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.search-input:focus {
+    border-color: #5c9eff;
+    background: rgba(60, 60, 60, 0.9);
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.results {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.result-item {
+    padding: 15px 20px;
+    margin: 5px 0;
+    background: rgba(50, 50, 50, 0.6);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 2px solid transparent;
+    font-size: 16px;
+}
+
+.result-item:hover {
+    background: rgba(70, 70, 70, 0.8);
+    transform: translateX(5px);
+}
+
+.result-item.selected {
+    background: rgba(92, 158, 255, 0.3);
+    border-color: #5c9eff;
+}
+
+.no-results {
     text-align: center;
+    padding: 40px;
+    color: #888;
+    font-size: 16px;
+}
+
+/* Custom scrollbar */
+.results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.results::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.results::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+.results::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 120, 0.7);
+}
+
+.status-bar {
+    padding: 10px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
 }
