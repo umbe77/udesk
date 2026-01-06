@@ -16,7 +16,7 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-//go:embed icon1.png
+//go:embed icon.png
 var icon []byte
 
 func initSysTray(app *App) (func(), func()) {
