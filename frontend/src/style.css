@@ -7,7 +7,7 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: transparent;
-    color: #e0e0e0;
+    color: #cdd6f4;
     overflow: hidden;
 }
 
@@ -16,95 +16,148 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: rgba(30, 30, 30, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(137, 180, 250, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .search-box {
     padding: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(137, 180, 250, 0.2);
 }
 
 .search-input {
     width: 100%;
     padding: 15px 20px;
     font-size: 18px;
-    background: rgba(50, 50, 50, 0.8);
-    border: 2px solid rgba(100, 100, 100, 0.5);
+    background: rgba(49, 50, 68, 0.8);
+    border: 2px solid rgba(137, 180, 250, 0.3);
     border-radius: 8px;
-    color: #e0e0e0;
+    color: #cdd6f4;
     outline: none;
     transition: all 0.2s;
 }
 
 .search-input:focus {
-    border-color: #5c9eff;
-    background: rgba(60, 60, 60, 0.9);
+    border-color: #89b4fa;
+    background: rgba(49, 50, 68, 0.95);
 }
 
 .search-input::placeholder {
-    color: #888;
+    color: #6c7086;
 }
 
 .results {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 10px;
+    min-height: 0;
 }
 
 .result-item {
     padding: 15px 20px;
     margin: 5px 0;
-    background: rgba(50, 50, 50, 0.6);
+    background: rgba(49, 50, 68, 0.6);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.15s;
     border: 2px solid transparent;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.result-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(137, 180, 250, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.result-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.result-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.result-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #cdd6f4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.result-description {
+    font-size: 13px;
+    color: #6c7086;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .result-item:hover {
-    background: rgba(70, 70, 70, 0.8);
+    background: rgba(88, 91, 112, 0.8);
     transform: translateX(5px);
 }
 
 .result-item.selected {
-    background: rgba(92, 158, 255, 0.3);
-    border-color: #5c9eff;
+    background: rgba(137, 180, 250, 0.3);
+    border-color: #89b4fa;
+}
+
+.result-item.selected .result-icon {
+    background: rgba(137, 180, 250, 0.2);
 }
 
 .no-results {
     text-align: center;
     padding: 40px;
-    color: #888;
+    color: #6c7086;
     font-size: 16px;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Catppuccin themed */
 .results::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 .results::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(30, 30, 46, 0.3);
+    border-radius: 5px;
 }
 
 .results::-webkit-scrollbar-thumb {
-    background: rgba(100, 100, 100, 0.5);
-    border-radius: 4px;
+    background: rgba(137, 180, 250, 0.4);
+    border-radius: 5px;
 }
 
 .results::-webkit-scrollbar-thumb:hover {
-    background: rgba(120, 120, 120, 0.7);
+    background: rgba(137, 180, 250, 0.6);
 }
 
 .status-bar {
     padding: 10px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(137, 180, 250, 0.2);
     font-size: 12px;
-    color: #888;
+    color: #6c7086;
     display: flex;
     justify-content: space-between;
 }
